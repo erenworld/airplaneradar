@@ -22,10 +22,10 @@ My Radar is a 2D visualization panel simulating air traffic (AT) written in C. I
 
 The project uses a Makefile for compilation. Use the following commands:
 
-make # Compile the project
-make re # Recompile the project
-make clean # Remove object files
-make fclean # Remove object files and the binary
+- make # Compile the project
+- make re # Recompile the project
+- make clean # Remove object files
+- make fclean # Remove object files and the binary
 
 ## Usage
 
