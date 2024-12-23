@@ -51,18 +51,6 @@ The project uses a Makefile for compilation. Use the following commands:
 - C compiler (gcc recommended)
 - Make
 
-## File Structure
-
-├── Makefile
-├── include/
-│ └── (header files)
-├── src/
-│ └── (source files)
-├── assets/
-│ └── (sprite files)
-└── bonus/
-└── (bonus features and specific Makefile if any)
-
 ## Notes
 
 - The simulation window is 1920x1080 pixels
