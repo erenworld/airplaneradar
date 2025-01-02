@@ -47,7 +47,8 @@ int add(void *data, char **args)
     int y;
     int radius;
 
-    while (args[i] != NULL && args[i+1] != NULL && args[i+2] != NULL) {
+    while (args[i] != NULL && args[i+1] != NULL 
+        && args[i+2] != NULL) {
         x = atoi(args[i]);
         y = atoi(args[i+1]);
         radius = atoi(args[i+2]);
