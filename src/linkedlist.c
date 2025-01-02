@@ -58,9 +58,26 @@ int add(void *data, char **args)
     return 0;
 }
 
-void free_three_part(char **threepart, int count);
-void free_tab(char **tab);
+void free_three_part(char **threepart, int count)
+{
+    for (int k = 0; k < count; k++)
+        free(threepart[k]);
+    free(threepart);
+}
 
+void free_tab(char **tab)
+{
+    for (int i = 0; tab[i] != NULL; i++)
+        free(tab[i]);
+    free(tab);
+}
+
+int check_error(char **three_part, int count)
+{
+    if (three_part == NULL || count != 4 || my_strcmp(three_part[0], "T") != 0)
+        return 1;
+    return 0;
+}
 
 struct node *get_tower_info(char *buffer)
 {
@@ -81,39 +98,17 @@ struct node *get_tower_info(char *buffer)
         count = 0;
         while (three_part[count] != NULL)
             count++;
-        if (count != 4 || my_strcmp(three_part[0], "T") != 0) {
-            for (int k = 0; k < count; k++)
-                free(three_part[k]);
-            free(three_part);
+        if (check_error(three_part, count) == 1) {
+            free_three_part(three_part, count);
             continue;
         }
-
-        if (three_part == NULL)
-            return NULL;
-        if (three_part[j] == NULL)
-            continue;
         x = atoi(three_part[1]);
         y = atoi(three_part[2]);
-        radius = atoi(three_part[3]); 
+        radius = atoi(three_part[3]);
         add_node(&head, x, y, radius);
         count_tower++;
-
         free_three_part(three_part, count);
     }
     free_tab(tab);
     return head;
-}
-
-void free_three_part(char **threepart, int count)
-{
-    for (int k = 0; k < count; k++)
-        free(threepart[k]);
-    free(threepart);
-}
-
-void free_tab(char **tab)
-{
-    for (int i = 0; tab[i] != NULL; i++)
-        free(tab[i]);
-    free(tab);
 }

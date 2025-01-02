@@ -108,25 +108,24 @@ int initial_data(const char *file, struct node **tower_list)
 
 int main(int argc, char **argv) 
 {
+    struct node *tower_list = NULL;
+    struct node *tmp = NULL;
+    int result;
+
     if (argc < 2) {
-        my_putstr("Error: Missing filename argument");
+        my_putstr("Error: No filename");
         return 84;
     }
-
-    struct node *tower_list = NULL;
-    int result = initial_data(argv[1], &tower_list);
+    result = initial_data(argv[1], &tower_list);
     if (result != 0) {
         return result;
     }
-
     my_radar(tower_list);
-
     while (tower_list != NULL) {
-        struct node *tmp = tower_list;
+        tmp = tower_list;
         tower_list = tower_list->next;
         free(tmp);
     }
-
     return 0;
 }
 
