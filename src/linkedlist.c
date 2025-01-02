@@ -64,14 +64,17 @@ struct node *get_tower_info(char *buffer)
     int i = 0;
     int count_tower = 0;
     char **tab = str_to_word_array(buffer);
+    char **three_part;
+    int count;
+    int x;
+    int y;
+    int radius;
 
     if (tab == NULL)
         return NULL;
-
     for (int j = 0; tab[j] != NULL; j++) {
-        char **three_part = str_to_word_array_s(tab[j]);
-
-        int count = 0;
+        three_part = str_to_word_array_s(tab[j]);
+        count = 0;
         while (three_part[count] != NULL)
             count++;
         if (count != 4 || my_strcmp(three_part[0], "T") != 0) {
@@ -85,9 +88,9 @@ struct node *get_tower_info(char *buffer)
             return NULL;
         if (three_part[j] == NULL)
             continue;
-        int x = atoi(three_part[1]);
-        int y = atoi(three_part[2]);
-        int radius = atoi(three_part[3]); 
+        x = atoi(three_part[1]);
+        y = atoi(three_part[2]);
+        radius = atoi(three_part[3]); 
         add_node(&head, x, y, radius);
         count_tower++;
 
