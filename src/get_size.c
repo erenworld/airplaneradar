@@ -10,10 +10,10 @@
 #include "../include/my.h"
 #include "../include/struct.h"
 
-long get_size(const char *file) 
+long get_size(const char *file)
 {
     struct stat file_info;
-    
+
     if (stat(file, &file_info) == 0) {
         return file_info.st_size;
     }

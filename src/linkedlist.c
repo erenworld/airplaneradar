@@ -10,6 +10,8 @@
 #include "../include/my.h"
 #include "../include/struct.h"
 
+// TOWERLIST
+
 struct node *create_node(int x, int y, int radius)
 {
     struct node *new_node = malloc(sizeof(struct node));
@@ -41,7 +43,9 @@ int add(void *data, char **args)
 {
     struct node **head = (struct node **)data;
     int i = 0;
-    int x, y, radius;
+    int x;
+    int y;
+    int radius;
 
     while (args[i] != NULL && args[i+1] != NULL && args[i+2] != NULL) {
         x = atoi(args[i]);
@@ -53,7 +57,6 @@ int add(void *data, char **args)
     return 0;
 }
 
-// tower list 
 struct node *get_tower_info(char *buffer)
 {
     struct node *head = NULL;
@@ -70,7 +73,6 @@ struct node *get_tower_info(char *buffer)
         while (three_part[count] != NULL)
             count++;
         if (count != 4 || my_strcmp(three_part[0], "T") != 0) {
-            // Free memory and continue to next iteration
             for (int k = 0; k < count; k++)
                 free(three_part[k]);
             free(three_part);
@@ -98,5 +100,4 @@ struct node *get_tower_info(char *buffer)
     return head;
 }
 
-// plane list
 

@@ -38,13 +38,13 @@ int my_radar(struct node *tower_list)
     window = sfRenderWindow_create(mode, "MY RADAR", sfResize | sfClose, NULL);
     if (!window)
         return EXIT_FAILURE;
-    texture = sfTexture_createFromFile("bggame.png", NULL);
+    texture = sfTexture_createFromFile("./img/bggame.png", NULL);
     if (!texture)
         return EXIT_FAILURE;
     sprite = sfSprite_create();
     sfSprite_setTexture(sprite, texture, sfTrue);
 
-    tx_tower = sfTexture_createFromFile("tower.png", NULL);
+    tx_tower = sfTexture_createFromFile("./img/tower.png", NULL);
     if (!tx_tower)
         return EXIT_FAILURE;
 
