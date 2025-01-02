@@ -58,6 +58,10 @@ int add(void *data, char **args)
     return 0;
 }
 
+void free_three_part(char **threepart, int count);
+void free_tab(char **tab);
+
+
 struct node *get_tower_info(char *buffer)
 {
     struct node *head = NULL;
@@ -94,15 +98,22 @@ struct node *get_tower_info(char *buffer)
         add_node(&head, x, y, radius);
         count_tower++;
 
-        for (int k = 0; k < count; k++)
-            free(three_part[k]);
-        free(three_part);
+        free_three_part(three_part, count);
     }
-
-    for (int i = 0; tab[i] != NULL; i++)
-        free(tab[i]);
-    free(tab);
+    free_tab(tab);
     return head;
 }
 
+void free_three_part(char **threepart, int count)
+{
+    for (int k = 0; k < count; k++)
+        free(threepart[k]);
+    free(threepart);
+}
 
+void free_tab(char **tab)
+{
+    for (int i = 0; tab[i] != NULL; i++)
+        free(tab[i]);
+    free(tab);
+}
