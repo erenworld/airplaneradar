@@ -47,11 +47,11 @@ int add(void *data, char **args)
     int y;
     int radius;
 
-    while (args[i] != NULL && args[i+1] != NULL 
-        && args[i+2] != NULL) {
+    while (args[i] != NULL && args[i + 1] != NULL
+        && args[i + 2] != NULL) {
         x = atoi(args[i]);
-        y = atoi(args[i+1]);
-        radius = atoi(args[i+2]);
+        y = atoi(args[i + 1]);
+        radius = atoi(args[i + 2]);
         add_node(head, x, y, radius);
         i += 3;
     }
@@ -64,9 +64,10 @@ struct node *get_tower_info(char *buffer)
     int i = 0;
     int count_tower = 0;
     char **tab = str_to_word_array(buffer);
+
     if (tab == NULL)
         return NULL;
-    
+
     for (int j = 0; tab[j] != NULL; j++) {
         char **three_part = str_to_word_array_s(tab[j]);
 
